@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+const expense = [
+  { category: "Food", amount: 300 },
+  { category: "Transport", amount: 150 },
+  { category: "Shopping", amount: 400 },
+]; 
+
+// Correct way to calculate total expense
+const total = expense.reduce((sum, item) => sum + amount, 0);
+
+console.log(`Total Expense: ${total}`);
+    </script>
+</body>
+</html>

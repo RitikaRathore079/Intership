@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Spread & Rest practics</title>
+</head>
+<body>
+    <script>
+        // Spread operator
+         const fruits = ["apple", "banana"];
+         const moreFruits = ["cherry", "mango"];
+         const combinedn = [...fruits, ...moreFruits];
+         console.log(combinedn);
+
+         // Rest oprator
+          
+         function print(...fruits)
+         {
+             return fruits.reduce((acc,fruit)=> acc + fruit,0);
+         }
+          const fruitsList = (print("apple","Banana","cherry"));
+          console.log(fruitsList);
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Users Grid</title>
+  <meta charset="UTF-8" />
+</head>
+<body>
+
+<h2>Random Users</h2>
+<button onclick="getUsers()">Refresh Users</button>
+
+<div id="userGrid" class="grid"></div>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    padding: 20px;
+    text-align: center;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  button {
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border: none;
+    background: #4f46e5;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #3730a3;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+
+  .card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #4f46e5;
+  }
+
+  .name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .info {
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+  }
+</style>
+
+<script>
+  async function getUsers() {
+    const grid = document.getElementById("userGrid");
+    grid.innerHTML = "<p>Loading users...</p>";
+
+    const response = await fetch("https://randomuser.me/api/?results=5");
+    const data = await response.json();
+
+    const users = data.results;
+    grid.innerHTML = "";
+
+    users.forEach(user => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML = `
+        <img src="${user.picture.large}" alt="User">
+        <div class="name">${user.name.first} ${user.name.last}</div>
+        <div class="info">${user.email}</div>
+        <div class="info">${user.location.city}, ${user.location.country}</div>
+        <div class="info">Age: ${user.dob.age}</div>
+      `;
+
+      grid.appendChild(card);
+    });
+  }
+
+  getUsers();
+</script>
+
+</body>
+</html>

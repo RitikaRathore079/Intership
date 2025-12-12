@@ -1,0 +1,21 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+    <script>
+
+        // filter prices greater than 250
+        const prices = [120, 250, 300, 450, 600]
+ const greater = prices.filter(price => price > 250 );
+ console.log(greater);
+
+  //apply 10% discount to prices
+    const discount = greater.map(price => price * 10/100);
+    console.log(discount);
+    </script>
+ </body>
+ </html>
