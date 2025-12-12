@@ -1,0 +1,17 @@
+const express = require("express");
+const dotenv = require("dotenv");
+dotenv.config();
+
+const app = express();
+
+app.use(express.json());
+
+const productRoutes = require("./routes/productRoutes");
+
+app.use("/api/products", productRoutes);
+
+const PORT = process.env.PORT || 2000;
+
+app.listen(PORT, () => {
+  console.log(`server running on ${PORT}`);
+});
